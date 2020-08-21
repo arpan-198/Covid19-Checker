@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="card col p-3 m-3 ">
+        <div class="ui statistics">
+            <div class="statistic">
+                <div class="value">
+                    {{countryData.active}}
+                </div>
+                <div class="label">
+                    Active <span *ngIf="countryData.aChange">
+                        <i class="fa fa-arrow-up"></i> {{countryData.aChange}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col p-3 m-3">
+        <div class="ui statistics">
+            <div class="statistic">
+                <div class="value">
+                    {{countryData.confirmed}}
+                </div>
+                <div class="label">
+                    Confirmed <span *ngIf="countryData.cChange">
+                        <i class="fa fa-arrow-up"></i> {{countryData.cChange}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col p-3 m-3">
+        <div class="ui statistics">
+            <div class="statistic ">
+                <div class="value">
+                    {{countryData.recovered}}
+                </div>
+                <div class="label">
+                    Recovered <span *ngIf="countryData.rChange">
+                        <i class="fa fa-arrow-up"></i> {{countryData.rChange}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col p-3 m-3">
+        <div class="ui statistics">
+            <div class="statistic">
+                <div class="value">
+                    {{countryData.death}}
+                </div>
+                <div class="label">
+                    Deceased <span *ngIf="countryData.dChange">
+                        <i class="fa fa-arrow-up"></i> {{countryData.dChange}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
