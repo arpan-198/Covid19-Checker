@@ -1,0 +1,58 @@
+<div class="ui inverted dimmer" [class.active]="loading">
+  <div class="ui massive text loader">Loading</div>
+</div>
+
+<div class="jumbotron bg-white text-center">
+  <h1 class="display-4"> COVID19 Tracker</h1>
+  <hr>
+  <app-dashboard *ngIf="countryData" [countryData]="countryData"></app-dashboard>
+  <hr>
+
+  <div class="ui form">
+    <div class="inline fields">
+      <label for="caseType">Select Case Type:</label>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" id="active" value="a" #a (click)="updateChart(a)" name="caseType" checked="" tabindex="0"
+            class="hidden">
+          <label for="active">Active</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" id="confirmed" value="c" #c (click)="updateChart(c)" name="caseType" tabindex="0"
+            class="hidden">
+          <label for="confirmed">Confirmed</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" id="recovered" value="r" #r (click)="updateChart(r)" name="caseType" tabindex="0"
+            class="hidden">
+          <label for="recovered">Recovered</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" id="death" value="d" #d (click)="updateChart(d)" name="caseType" tabindex="0"
+            class="hidden">
+          <label for="death">Deceased</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <canvas baseChart height=250px width=300px [datasets]="barChartData" [labels]="barChartLabels"
+          [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+        </canvas>
+      </div>
+      <div class="col">
+        <h2> Last 15 Days Statistics</h2><br>
+        <canvas baseChart width=200px height=130px [datasets]="lineChartData" [labels]="lineChartLabels"
+          [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+    </div>
+  </div>

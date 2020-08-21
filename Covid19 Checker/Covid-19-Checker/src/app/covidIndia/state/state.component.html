@@ -1,0 +1,102 @@
+  <div class="ui inverted dimmer" [class.active]="loading">
+    <div class="ui massive text loader">Loading</div>
+  </div>
+
+
+<div class="jumbotron bg-white text-center" >
+    <h1 class="display-4"> COVID19 States Tracker</h1>
+    <hr>
+    <div *ngIf="case$ | async as stateData">
+        <div class="mx-auto">
+            <div class="form-group col-lg-5 mx-auto">
+                <label for="stateSelect">
+                    <h2>Select State</h2>
+                </label>
+                <select name="" class="form-control" id="stateSelect" #select (change)="onSelectState(select.value)">
+                    <option [value]=st.state *ngFor="let st of stateData ">{{st.state}}</option>
+                </select>
+    
+            </div>
+        </div>
+
+            <app-dashboard *ngIf="countryData"  [countryData]="countryData"></app-dashboard>
+
+        
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="ui red table" [style.height.px]="400">
+                <thead>
+                  <tr><th>Disrict</th>
+                    <th>Active</th>
+                  <th>Confirmed</th>
+                  <th>Recovered</th>
+                  <th>Deceased</th>
+                </tr></thead>
+                <tbody *ngFor="let i of distNames">
+                  <tr>
+                    <td>{{i}}</td>
+                    <td>{{complete_data[i].active}}</td>
+                    <td>{{complete_data[i].confirmed}}</td>
+                    <td>{{complete_data[i].recovered}}</td>
+                    <td>{{complete_data[i].deceased}}</td>
+                  </tr>
+                </tbody> 
+
+              </table>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <canvas baseChart 
+                [datasets]="barChartData1"
+                [colors]="barChartColor1"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+              </canvas>
+            </div>
+            <div class="row">
+                <canvas baseChart 
+                [datasets]="barChartData2"
+                [colors]="barChartColor2"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+              </canvas>
+            </div>
+            <div class="row">
+                <canvas baseChart 
+                [datasets]="barChartData3"
+                [colors]="barChartColor3"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+              </canvas>
+            </div>
+            <div class="row">
+              <canvas baseChart 
+              [datasets]="barChartData4"
+              [colors]="barChartColor4"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+            </canvas>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
