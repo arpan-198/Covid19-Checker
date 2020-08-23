@@ -81,7 +81,7 @@ export class StateNormalComponent implements OnInit {
                 this.countryData = {
                     active: this.case$['active'],
                     confirmed: this.case$['confirmed'],
-                    death: this.case$['deaths'],
+                    deceased: this.case$['deaths'],
                     recovered: this.case$['recovered'],
                     aChange: this.case$['aChanges'],
                     cChange: this.case$['cChanges'],
